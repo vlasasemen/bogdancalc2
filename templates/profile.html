@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Профиль пользователя</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+    <h1>Профиль пользователя</h1>
+    <br><a class="qwe" href="/">Вернуться на главную</a> <br>
+    <h2>Добро пожаловать, {{ user[2] }}</h2>
+    <p>Email: {{ user[1] }}</p>
+    <p>Аккаунт создан: {{ user[3] }}</p>
+
+    <h3>Заявки на кредит:</h3>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Сумма</th>
+            <th>Период (Месяцы)</th>
+            <th>Процент (%)</th>
+            <th>Тип</th>
+            <th>Статус</th>
+        </tr>
+        {% for loan in loans %}
+        <tr>
+            <td>{{ loan[0] }}</td>
+            <td>{{ loan[2] }}</td>
+            <td>{{ loan[3] }}</td>
+            <td>{{ loan[4] }}</td>
+            <td>{{ loan[5] }}</td>
+            <td>{{ loan[6] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if chart %}
+    <h3>Последний график платежей по кредиту</h3>
+    <img src="data:image/png;base64,{{ chart }}" alt="Loan Payment Chart">
+    {% endif %}
+</body>
+</html>

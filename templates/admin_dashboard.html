@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администратора</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+    <h1>Панель администратора</h1>
+    <br><a class="qwe" href="/">Вернуться на главную</a> <br>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Сумма</th>
+            <th>Период</th>
+            <th>Ставка (%)</th>
+            <th>Тип</th>
+            <th>Статус</th>
+            <th>Одобрено/Отклонено</th>
+        </tr>
+        {% for app in applications %}
+        <tr>
+            <td>{{ app[0] }}</td>
+            <td>{{ app[1] }}</td>
+            <td>{{ app[2] }}</td>
+            <td>{{ app[3] }}</td>
+            <td>{{ app[4] }}</td>
+            <td>{{ app[5] }}</td>
+            <td>{{ app[6] }}</td>
+            <td>
+                <form method="post">
+                    <input type="hidden" name="app_id" value="{{ app[0] }}">
+                    <select name="status">
+                        <option value="Approved">Одобрить</option>
+                        <option value="Rejected">Отклонить</option>
+                    </select>
+                    <button class="qwe" type="submit">Обновить</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

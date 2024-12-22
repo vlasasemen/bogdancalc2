@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кредитный калькулятор</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+    <h1>Кредитный калькулятор</h1> <br>
+    <br><a class="qwe" href="/">Вернуться на главную</a> <br>
+    <a class="qwe" href="/profile">Личный кабинет</a> <br>
+    <form method="post">
+        <label for="amount">Сумма кредита:</label>
+        <input type="number" id="amount" name="amount" required><br>
+
+        <label for="period">Количество месяцев (Месяцы):</label>
+        <input type="number" id="period" name="period" required><br>
+
+        <label for="rate">Процентная ставка (%):</label>
+        <input type="number" id="rate" name="rate" step="0.01" required><br>
+
+        <label for="type">Схема выплат:</label>
+        <select id="type" name="type">
+            <option value="annuity">Аннуитетный</option>
+            <option value="differentiated">Дифферинцированный</option>
+        </select><br>
+
+        <button class="qwe" type="submit">Подать заявку</button>
+
+    </form>
+
+    {% if result %}
+    <h2>Результаты:</h2>
+    <p>{{ result }}</p>
+    <img src="data:image/png;base64,{{ chart }}" alt="Loan Payment Chart">
+    {% endif %}
+</body>
+</html>
+
+
